@@ -21,13 +21,23 @@ namespace FA_datawork_HRB
             Result = Result1;
         }
         private void frmprint_Load(object sender, EventArgs e)
-        {          
-            reportViewer1.LocalReport.ReportPath = Application.StartupPath + "\\Report1.rdlc";
-            //指定数据集,数据集名称后为表,不是DataSet类型的数据集
-            this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", Result));
-            //显示报表
-            this.reportViewer1.RefreshReport();
+        {
+            try
+            {
+                reportViewer1.LocalReport.ReportPath = Application.StartupPath + "\\Report1.rdlc";
+                //指定数据集,数据集名称后为表,不是DataSet类型的数据集
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", Result));
+                //显示报表
+                this.reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("异常" + ex);
+                return;
+
+                throw;
+            }
         }
     }
 }

@@ -451,8 +451,12 @@ namespace FA_datawork_HRB
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+        
+
             RowRemark = e.RowIndex;
             cloumn = e.ColumnIndex;
+            if (RowRemark < 0)
+                return;
             clsFAinfo item = new clsFAinfo();
             item.fapiaohao =this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString();
             item.danganhao = this.dataGridView1.Rows[RowRemark].Cells["档案号"].EditedFormattedValue.ToString();
@@ -526,6 +530,24 @@ namespace FA_datawork_HRB
         {
             InitialSystemInfo();
             BuildStockNO();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (RowRemark>=0)
+            dataGridView1.Rows[RowRemark].ReadOnly = false;
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;//将当前单元格设为可读
+            this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];//获取当前单元格
+            this.dataGridView1.BeginEdit(true);//将单元格设为编辑状态
         }
     }
 }

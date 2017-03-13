@@ -576,13 +576,13 @@ namespace FA_datawork_HRB
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(PMHZ);
             this.bindingSource1.DataSource = sortablePendingOrderList;
             this.dataGridView2.DataSource = this.bindingSource1;
-         
+
             bindingSource2.DataSource = null;
             this.dataGridView1.AutoGenerateColumns = false;
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(Result);
             this.bindingSource2.DataSource = sortablePendingOrderList;
             this.dataGridView1.DataSource = this.bindingSource2;
-         
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -597,14 +597,11 @@ namespace FA_datawork_HRB
             else
                 MessageBox.Show("请读取数据后再次下载数据！");
 
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             InitialSystemInfo();
-
-
         }
 
 

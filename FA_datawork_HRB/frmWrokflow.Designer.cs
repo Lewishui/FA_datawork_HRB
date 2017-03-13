@@ -34,6 +34,15 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.发票号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.档案号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.归档人账号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.机构代码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.发票类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.录入时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,7 +59,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.stockNOTextBox = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -59,29 +69,19 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.发票号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.档案号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.归档人账号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.机构代码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.发票类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.录入时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.contextMenuStrip3.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,6 +137,81 @@
             this.tabPage1.Size = new System.Drawing.Size(944, 403);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Page1";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.发票号,
+            this.档案号,
+            this.编号,
+            this.归档人账号,
+            this.机构代码,
+            this.发票类型,
+            this.录入时间});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip3;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(938, 397);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            // 
+            // 发票号
+            // 
+            this.发票号.DataPropertyName = "fapiaohao";
+            this.发票号.HeaderText = "发票号";
+            this.发票号.Name = "发票号";
+            // 
+            // 档案号
+            // 
+            this.档案号.DataPropertyName = "danganhao";
+            this.档案号.HeaderText = "档案号";
+            this.档案号.Name = "档案号";
+            // 
+            // 编号
+            // 
+            this.编号.DataPropertyName = "bianhao";
+            this.编号.HeaderText = "编号";
+            this.编号.Name = "编号";
+            // 
+            // 归档人账号
+            // 
+            this.归档人账号.DataPropertyName = "guidangrenzhanghao";
+            this.归档人账号.HeaderText = "归档人账号";
+            this.归档人账号.Name = "归档人账号";
+            // 
+            // 机构代码
+            // 
+            this.机构代码.DataPropertyName = "jigoudaima";
+            this.机构代码.HeaderText = "机构代码";
+            this.机构代码.Name = "机构代码";
+            // 
+            // 发票类型
+            // 
+            this.发票类型.DataPropertyName = "fapiaoleixing";
+            this.发票类型.HeaderText = "发票类型";
+            this.发票类型.Name = "发票类型";
+            // 
+            // 录入时间
+            // 
+            this.录入时间.DataPropertyName = "Input_Date";
+            this.录入时间.HeaderText = "录入时间";
+            this.录入时间.Name = "录入时间";
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.保存ToolStripMenuItem,
+            this.notifyToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip1";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(101, 48);
             // 
             // tabPage2
             // 
@@ -352,14 +427,20 @@
             this.stockNOTextBox.Size = new System.Drawing.Size(245, 25);
             this.stockNOTextBox.TabIndex = 41;
             // 
-            // contextMenuStrip3
+            // toolStrip2
             // 
-            this.contextMenuStrip3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.保存ToolStripMenuItem,
-            this.notifyToolStripMenuItem});
-            this.contextMenuStrip3.Name = "contextMenuStrip1";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(101, 48);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 519);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(958, 25);
+            this.toolStrip2.TabIndex = 4;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(0, 22);
             // 
             // toolStripButton5
             // 
@@ -437,85 +518,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 519);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(958, 25);
-            this.toolStrip2.TabIndex = 4;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(0, 22);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.发票号,
-            this.档案号,
-            this.编号,
-            this.归档人账号,
-            this.机构代码,
-            this.发票类型,
-            this.录入时间});
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip3;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(938, 397);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            // 
-            // 发票号
-            // 
-            this.发票号.DataPropertyName = "fapiaohao";
-            this.发票号.HeaderText = "发票号";
-            this.发票号.Name = "发票号";
-            // 
-            // 档案号
-            // 
-            this.档案号.DataPropertyName = "danganhao";
-            this.档案号.HeaderText = "档案号";
-            this.档案号.Name = "档案号";
-            // 
-            // 编号
-            // 
-            this.编号.DataPropertyName = "bianhao";
-            this.编号.HeaderText = "编号";
-            this.编号.Name = "编号";
-            // 
-            // 归档人账号
-            // 
-            this.归档人账号.DataPropertyName = "guidangrenzhanghao";
-            this.归档人账号.HeaderText = "归档人账号";
-            this.归档人账号.Name = "归档人账号";
-            // 
-            // 机构代码
-            // 
-            this.机构代码.DataPropertyName = "jigoudaima";
-            this.机构代码.HeaderText = "机构代码";
-            this.机构代码.Name = "机构代码";
-            // 
-            // 发票类型
-            // 
-            this.发票类型.DataPropertyName = "fapiaoleixing";
-            this.发票类型.HeaderText = "发票类型";
-            this.发票类型.Name = "发票类型";
-            // 
-            // 录入时间
-            // 
-            this.录入时间.DataPropertyName = "Input_Date";
-            this.录入时间.HeaderText = "录入时间";
-            this.录入时间.Name = "录入时间";
-            // 
             // frmWrokflow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,19 +533,19 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            this.contextMenuStrip3.ResumeLayout(false);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
