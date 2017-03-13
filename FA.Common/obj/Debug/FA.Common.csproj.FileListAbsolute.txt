@@ -8,3 +8,9 @@ C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Common\bin\Debug\Micros
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Common\bin\Debug\office.xml
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Common\obj\Debug\FA.Common.dll
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Common\obj\Debug\FA.Common.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Common\bin\Debug\FA.Common.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Common\bin\Debug\FA.Common.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Common\bin\Debug\Microsoft.Office.Interop.Excel.xml
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Common\obj\Debug\FA.Common.csprojResolveAssemblyReference.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Common\obj\Debug\FA.Common.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Common\obj\Debug\FA.Common.pdb

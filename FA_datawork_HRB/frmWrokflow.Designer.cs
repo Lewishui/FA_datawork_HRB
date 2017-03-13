@@ -206,7 +206,7 @@
             // 
             // contextMenuStrip3
             // 
-            this.contextMenuStrip3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.contextMenuStrip3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.保存ToolStripMenuItem,
             this.notifyToolStripMenuItem});
@@ -326,7 +326,7 @@
             "21960",
             "21961",
             "21962"});
-            this.comboBox1.Location = new System.Drawing.Point(68, 5);
+            this.comboBox1.Location = new System.Drawing.Point(68, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
@@ -341,7 +341,7 @@
             this.comboBox2.Items.AddRange(new object[] {
             "01",
             "02"});
-            this.comboBox2.Location = new System.Drawing.Point(280, 5);
+            this.comboBox2.Location = new System.Drawing.Point(280, 6);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(85, 21);
             this.comboBox2.TabIndex = 3;
@@ -374,10 +374,10 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 415F));
-            this.tableLayoutPanel5.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.textBox3, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.stockNOTextBox, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label6, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.textBox3, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -446,7 +446,7 @@
             // 
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(58, 19);
+            this.toolStripButton5.Size = new System.Drawing.Size(58, 21);
             this.toolStripButton5.Text = "刷新";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -454,7 +454,7 @@
             // 
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(58, 19);
+            this.toolStripButton6.Size = new System.Drawing.Size(58, 21);
             this.toolStripButton6.Text = "下载";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
@@ -462,7 +462,7 @@
             // 
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 19);
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 21);
             this.toolStripButton1.Text = "清空";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -470,7 +470,7 @@
             // 
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(58, 19);
+            this.toolStripButton2.Size = new System.Drawing.Size(58, 21);
             this.toolStripButton2.Text = "档号删除";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -478,7 +478,7 @@
             // 
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(58, 19);
+            this.toolStripButton3.Size = new System.Drawing.Size(58, 21);
             this.toolStripButton3.Text = "归档";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 

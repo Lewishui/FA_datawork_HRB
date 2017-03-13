@@ -41,7 +41,7 @@ namespace FA_datawork_HRB
             this.comboBox2.SelectedIndex = 0;
             guidangren = username;
             NewMethoduserFind(username);
-           
+
 
 
         }
@@ -55,6 +55,7 @@ namespace FA_datawork_HRB
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(Result);
             this.bindingSource1.DataSource = sortablePendingOrderList;
             this.dataGridView1.DataSource = this.bindingSource1;
+            toolStripLabel1.Text = "发票条目：" + Result.Count;
         }
 
 
@@ -173,6 +174,12 @@ namespace FA_datawork_HRB
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            if (stockNOTextBox.Text == "")
+            {
+                MessageBox.Show("档号不能为空，请选择机构代码&发票类型", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
             List<clsFAinfo> Result = new List<clsFAinfo>();
             int sss = 0;
             if (textBox1.Text != "" && this.textBox2.Text != "")
@@ -184,7 +191,7 @@ namespace FA_datawork_HRB
                 for (int i = 0; i <= len; i++)
                 {
                     clsFAinfo item = new clsFAinfo();
-                    int ssl= Convert.ToInt32(textBox1.Text) + i;
+                    int ssl = Convert.ToInt32(textBox1.Text) + i;
 
                     item.fapiaohao = ssl.ToString();
                     item.jigoudaima = comboBox1.Text;
@@ -203,25 +210,36 @@ namespace FA_datawork_HRB
             }
             if (this.textBox3.Text != "")
             {
-                clsFAinfo item = new clsFAinfo();
-               
-                item.fapiaohao = textBox3.Text;
-                item.jigoudaima = comboBox1.Text;
-                item.fapiaoleixing = comboBox2.Text;
-                item.danganhao = stockNOTextBox.Text;
-                item.Input_Date = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-                item.guidangrenzhanghao = guidangren;
-                sss = sss + 1;
-                item.bianhao = sss.ToString().PadLeft(4, '0');
-                Result.Add(item);
+                if (textBox3.Text != "" )
+                {
+                    string[] feilianxifapiao = System.Text.RegularExpressions.Regex.Split(textBox3.Text, " ");
+
+                    for (int i = 0; i < feilianxifapiao.Length; i++)
+                    {                
+                        clsFAinfo item = new clsFAinfo();
+
+                        item.fapiaohao = feilianxifapiao[i];
+                        item.jigoudaima = comboBox1.Text;
+                        item.fapiaoleixing = comboBox2.Text;
+                        item.danganhao = stockNOTextBox.Text;
+                        item.Input_Date = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                        item.guidangrenzhanghao = guidangren;
+                        sss = sss + 1;
+                        item.bianhao = sss.ToString().PadLeft(4, '0');
+                        Result.Add(item);
+                    }
+                }
             }
             if (Result.Count != 0)
             {
                 clsAllnew BusinessHelp = new clsAllnew();
                 BusinessHelp.createFapiao_Server(Result);
                 toolStripLabel1.Text = "已保存发票条目：" + Result.Count;
-                InitialSystemInfo();
-
+                //InitialSystemInfo();
+                this.dataGridView1.AutoGenerateColumns = false;
+                sortablePendingOrderList = new SortableBindingList<clsFAinfo>(Result);
+                this.bindingSource1.DataSource = sortablePendingOrderList;
+                this.dataGridView1.DataSource = this.bindingSource1;
             }
 
 
@@ -231,7 +249,7 @@ namespace FA_datawork_HRB
         {
             InitialSystemInfo();
             BuildStockNO();
-    
+
 
         }
         private void BuildStockNO()
@@ -241,9 +259,9 @@ namespace FA_datawork_HRB
                 //读取-发票盒号 最大值
                 if (Result != null && Result.Count != 0)
                 {
-                  //  var changeList = this.Result.FindAll(s => s.jigoudaima == comboBox1.Text && s.fapiaoleixing == comboBox2.Text);
+                    //  var changeList = this.Result.FindAll(s => s.jigoudaima == comboBox1.Text && s.fapiaoleixing == comboBox2.Text);
                     var sss = Result.Select(s => new MockEntity { ShortName = s.danganhao, FullName = s.danganhao }).Distinct().OrderBy(s => s.ShortName).ToList(); ;
-                    
+
                     string[] temptong = System.Text.RegularExpressions.Regex.Split(sss[sss.Count - 1].ShortName, "-");
                     int ssl = Convert.ToInt32("1" + temptong[3]) + 1;
                     hezihao = ssl.ToString().Substring(1, Convert.ToInt32(ssl.ToString().Length - 1));
@@ -267,7 +285,11 @@ namespace FA_datawork_HRB
         {
             int len = Convert.ToInt32(textBox2.Text) - Convert.ToInt32(textBox1.Text) + 1;
             if (textBox3.Text != "")
-                len++;
+            {
+                string[] feilianxifapiao = System.Text.RegularExpressions.Regex.Split(textBox3.Text, " ");
+
+              len=  len + feilianxifapiao.Length ;
+            }
 
             if (len < 0)
                 errorProvider1.SetError(textBox2, String.Format("结束发票号不能小于起始发票号！"));
@@ -286,8 +308,11 @@ namespace FA_datawork_HRB
             if (textBox1.Text != "" && this.textBox2.Text != "")
                 len = Convert.ToInt32(textBox2.Text) - Convert.ToInt32(textBox1.Text) + 1;
             if (textBox3.Text != "")
-                len++;
+            {
+                string[] feilianxifapiao = System.Text.RegularExpressions.Regex.Split(textBox3.Text, " ");
 
+                len = len + feilianxifapiao.Length;
+            }
             if (len < 0)
                 errorProvider1.SetError(textBox2, String.Format("结束发票号不能小于起始发票号！"));
             else
@@ -341,17 +366,17 @@ namespace FA_datawork_HRB
                     MessageBox.Show("登录失败,账户已被锁定，请重试或联系系统管理员，谢谢", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                if ( User.ToString().Trim() == user.Trim())
+                if (User.ToString().Trim() == user.Trim())
                     if (Useramin == "true")
                     {
                         toolStripButton2.Enabled = true;
                     }
                     else
                     {
-                        toolStripButton2.Enabled = false;                 
-                                   
+                        toolStripButton2.Enabled = false;
+
                     }
-            } 
+            }
             return false;
 
         }
@@ -439,7 +464,7 @@ namespace FA_datawork_HRB
             }
             clsFAinfo item = new clsFAinfo();
 
-            item.fapiaohao =this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString();
+            item.fapiaohao = this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString();
             item.danganhao = this.dataGridView1.Rows[RowRemark].Cells["档案号"].EditedFormattedValue.ToString();
             item.jigoudaima = this.dataGridView1.Rows[RowRemark].Cells["机构代码"].EditedFormattedValue.ToString();
 
@@ -451,23 +476,23 @@ namespace FA_datawork_HRB
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-        
+
 
             RowRemark = e.RowIndex;
             cloumn = e.ColumnIndex;
             if (RowRemark < 0)
                 return;
             clsFAinfo item = new clsFAinfo();
-            item.fapiaohao =this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString();
+            item.fapiaohao = this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString();
             item.danganhao = this.dataGridView1.Rows[RowRemark].Cells["档案号"].EditedFormattedValue.ToString();
             item.bianhao = this.dataGridView1.Rows[RowRemark].Cells["编号"].EditedFormattedValue.ToString();
             item.jigoudaima = this.dataGridView1.Rows[RowRemark].Cells["机构代码"].EditedFormattedValue.ToString();
 
             //var pendingorder = Result.Find(o => o.QiHao == id.ToString());
+
             clsFAinfo stock = this.Result.Find(o => (o.fapiaohao == item.fapiaohao && o.danganhao == item.danganhao && o.jigoudaima == item.jigoudaima));
-
-
-            IDclick = stock.R_id;
+            if (stock != null)
+                IDclick = stock.R_id;
 
         }
 
@@ -479,11 +504,11 @@ namespace FA_datawork_HRB
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (RowRemark >= dataGridView1.RowCount)
+            if (RowRemark >= dataGridView1.RowCount || IDclick == "")
                 return;
             List<clsFAinfo> SaveResult = new List<clsFAinfo>();
             clsFAinfo item = new clsFAinfo();
-            item.fapiaohao =  this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString() ;
+            item.fapiaohao = this.dataGridView1.Rows[RowRemark].Cells["发票号"].EditedFormattedValue.ToString();
             item.danganhao = this.dataGridView1.Rows[RowRemark].Cells["档案号"].EditedFormattedValue.ToString();
             item.bianhao = this.dataGridView1.Rows[RowRemark].Cells["编号"].EditedFormattedValue.ToString();
             item.jigoudaima = this.dataGridView1.Rows[RowRemark].Cells["机构代码"].EditedFormattedValue.ToString();
@@ -491,15 +516,16 @@ namespace FA_datawork_HRB
             item.Input_Date = DateTime.Now.ToString("yyyyMMdd-HHmmss");
             item.R_id = IDclick;
             item.guidangrenzhanghao = guidangren;
+            if (item.danganhao != null && item.danganhao != "")
+                SaveResult.Add(item);
 
-            SaveResult.Add(item);
+            if (SaveResult.Count > 0)
+            {
+                clsAllnew BusinessHelp = new clsAllnew();
 
-
-            clsAllnew BusinessHelp = new clsAllnew();
-
-            BusinessHelp.updateFA_Server(SaveResult);
-            InitialSystemInfo();
-
+                BusinessHelp.updateFA_Server(SaveResult);
+                InitialSystemInfo();
+            }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -539,8 +565,8 @@ namespace FA_datawork_HRB
 
         private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (RowRemark>=0)
-            dataGridView1.Rows[RowRemark].ReadOnly = false;
+            if (RowRemark >= 0)
+                dataGridView1.Rows[RowRemark].ReadOnly = false;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

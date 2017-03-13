@@ -3,3 +3,8 @@ C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.DB\bin\Debug\FA.DB.pdb
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.DB\obj\Debug\FA.DB.dll
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.DB\obj\Debug\FA.DB.pdb
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.DB\obj\Debug\FA.DB.csprojResolveAssemblyReference.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.DB\bin\Debug\FA.DB.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.DB\bin\Debug\FA.DB.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.DB\obj\Debug\FA.DB.csprojResolveAssemblyReference.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.DB\obj\Debug\FA.DB.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.DB\obj\Debug\FA.DB.pdb

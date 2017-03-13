@@ -36,3 +36,37 @@ C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\RdlCompile.compiled
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\Report1.rdlc
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\Log4Net.config
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\Interop.SHDocVw.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.csproj.ResolveComReference.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.exe
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\Report1.rdlc
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\Log4Net.config
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA_datawork_HRB.exe
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA_datawork_HRB.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA.Buiness.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA.Common.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA.DB.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\IrisSkin2.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\log4net.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\MongoDB.Bson.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\MongoDB.Driver.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA.Buiness.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA.Common.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\FA.DB.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\Microsoft.Office.Interop.Excel.xml
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\bin\Debug\Interop.SHDocVw.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.csprojResolveAssemblyReference.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmDeleteFapiaoAdmin.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmEdidUser.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmFapiaoInfo.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmlogin.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmprint.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmUserManger.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmViewUser.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmWrokflow.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.Properties.Resources.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.csproj.GenerateResource.Cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\RdlCompile.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\RdlCompile.compiled

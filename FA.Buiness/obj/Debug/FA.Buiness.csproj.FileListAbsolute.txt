@@ -8,3 +8,13 @@ C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Buiness\bin\Debug\log4n
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Buiness\bin\Debug\MongoDB.Bson.dll
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Buiness\bin\Debug\MongoDB.Driver.dll
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA.Buiness\bin\Debug\FA.DB.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\FA.Buiness.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\FA.Buiness.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\FA.DB.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\log4net.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\MongoDB.Bson.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\MongoDB.Driver.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\bin\Debug\FA.DB.pdb
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\obj\Debug\FA.Buiness.csprojResolveAssemblyReference.cache
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\obj\Debug\FA.Buiness.dll
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA.Buiness\obj\Debug\FA.Buiness.pdb
