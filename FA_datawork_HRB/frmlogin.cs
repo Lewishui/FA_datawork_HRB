@@ -33,11 +33,15 @@ namespace FA_datawork_HRB
         private frmWrokflow frmWrokflow;
         private int alterisrun;
         private string ipadress;
+        private frmHelp frmHelp;
 
         public frmlogin()
         {
             InitializeComponent();
             InitialSystemInfo();
+            se = new Sunisoft.IrisSkin.SkinEngine();
+            se.SkinAllForm = true;
+            se.SkinFile = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ""), "GlassOrange.ssk");
 
             InitialPassword();
             ProcessLogger.Fatal("login" + DateTime.Now.ToString());
@@ -45,7 +49,8 @@ namespace FA_datawork_HRB
               
             string[] fileText = File.ReadAllLines(path);
             ipadress = "mongodb://"+fileText[0];
-
+            this.Text = "PA 财务系统 " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+          
         }
         private void InitialSystemInfo()
         {
@@ -308,7 +313,12 @@ namespace FA_datawork_HRB
             {
                 frmFapiaoInfo = null;
             }
+            if (sender is frmHelp)
+            {
+                frmHelp = null;
+            }
 
+            
         }
 
         private void 查询信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -575,6 +585,21 @@ namespace FA_datawork_HRB
             string ZFCEPath = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "System"), "");
             System.Diagnostics.Process.Start("explorer.exe", ZFCEPath);
 
+        }
+
+        private void 关于系统ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmHelp == null)
+            {
+                frmHelp = new frmHelp();
+                frmHelp.FormClosed += new FormClosedEventHandler(FrmOMS_FormClosed);
+            }
+            if (frmHelp == null)
+            {
+                frmHelp = new frmHelp();
+            }
+
+            frmHelp.Show(this.dockPanel2);
         }
     }
 }

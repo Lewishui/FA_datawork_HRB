@@ -22,7 +22,8 @@ namespace FA_datawork_HRB
         int RowRemark = 0;
         int cloumn = 0;
         List<clsFAinfo> Result;
-
+        public log4net.ILog ProcessLogger;
+        public log4net.ILog ExceptionLogger;
         private SortableBindingList<clsFAinfo> sortablePendingOrderList;
         private string IDclick;
         List<clsFAinfo> Flter_Result;
@@ -31,10 +32,11 @@ namespace FA_datawork_HRB
         {
             InitializeComponent();
             InitialSystemInfo();
+            ProcessLoggerInitialSystemInfo();
 
             this.comboBox1.SelectedIndex = 0;
             this.comboBox2.SelectedIndex = 0;
-
+            ProcessLogger.Fatal("print Initial" + DateTime.Now.ToString());
         }
         public class SortableBindingList<T> : BindingList<T>
         {
@@ -301,7 +303,7 @@ namespace FA_datawork_HRB
             try
             {
 
-
+                ProcessLogger.Fatal("8948 Down Initial" + DateTime.Now.ToString());
                 #region 获取模板路径
 
                 string fullPath = AppDomain.CurrentDomain.BaseDirectory + "System\\confing.xls";
@@ -344,6 +346,7 @@ namespace FA_datawork_HRB
                 Microsoft.Office.Interop.Excel._Workbook ExcelBook =
                 ExcelApp.Workbooks.Open(fullPath, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue);
                 #endregion
+                ProcessLogger.Fatal("8949  Input Initial" + DateTime.Now.ToString());
 
                 #region 导入
                 try
@@ -386,6 +389,8 @@ namespace FA_datawork_HRB
 
                     //ExcelBook.PrintOut();
                     #region 写入文件
+                    ProcessLogger.Fatal("8950  Output Initial" + DateTime.Now.ToString());
+
                     ExcelApp.DisplayAlerts = false;
                     ExcelApp.ScreenUpdating = true;
                     ExcelBook.SaveAs(ResaveName, missingValue, missingValue, missingValue, missingValue, missingValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missingValue, missingValue, missingValue, missingValue, missingValue);
@@ -596,6 +601,133 @@ namespace FA_datawork_HRB
             }
             else
                 MessageBox.Show("请读取数据后再次下载数据！");
+            return;
+            //下载两个 全屏信息
+
+            string strFileName="";
+            string strFileName2 = "";
+            #region dav 1
+            {
+                {
+                    if (this.dataGridView1.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Sorry , No Data Output !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    var saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.DefaultExt = ".csv";
+                    saveFileDialog.Filter = "csv|*.csv";
+                     strFileName = "System  Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+                     strFileName2 = strFileName;
+
+                    saveFileDialog.FileName = strFileName;
+                    if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        strFileName = saveFileDialog.FileName.ToString();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    FileStream fa = new FileStream(strFileName, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fa, Encoding.Unicode);
+                    string delimiter = "\t";
+                    string strHeader = "";
+                    for (int i = 0; i < this.dataGridView1.Columns.Count; i++)
+                    {
+                        strHeader += this.dataGridView1.Columns[i].HeaderText + delimiter;
+                    }
+                    sw.WriteLine(strHeader);
+
+                    //output rows data
+                    for (int j = 0; j < this.dataGridView1.Rows.Count; j++)
+                    {
+                        string strRowValue = "";
+
+                        for (int k = 0; k < this.dataGridView1.Columns.Count; k++)
+                        {
+                            if (this.dataGridView1.Rows[j].Cells[k].Value != null)
+                            {
+                                strRowValue += this.dataGridView1.Rows[j].Cells[k].Value.ToString().Replace("\r\n", " ").Replace("\n", "") + delimiter;
+                                if (this.dataGridView1.Rows[j].Cells[k].Value.ToString() == "LIP201507-35")
+                                {
+
+                                }
+
+                            }
+                            else
+                            {
+                                strRowValue += this.dataGridView1.Rows[j].Cells[k].Value + delimiter;
+                            }
+                        }
+                        sw.WriteLine(strRowValue);
+                    }
+                    sw.Close();
+                    fa.Close();
+
+                }
+
+            } 
+            #endregion
+
+            #region dav 2
+            {
+                {
+                    if (this.dataGridView2.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Sorry , No Data Output !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    var saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.DefaultExt = ".csv";
+                    saveFileDialog.Filter = "csv|*.csv";
+                    string strFileName1 = "System 2 Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss")+"";
+                    saveFileDialog.FileName = strFileName;
+                    //if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                    //{
+                    //    strFileName = saveFileDialog.FileName.ToString();
+                    //}
+                    //else
+                    //{
+                    //    return;
+                    //}
+                    strFileName = strFileName.Replace(strFileName2, strFileName1);
+
+                    FileStream fa = new FileStream(strFileName, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fa, Encoding.Unicode);
+                    string delimiter = "\t";
+                    string strHeader = "";
+                    for (int i = 0; i < this.dataGridView2.Columns.Count; i++)
+                    {
+                        strHeader += this.dataGridView2.Columns[i].HeaderText + delimiter;
+                    }
+                    sw.WriteLine(strHeader);
+
+                    //output rows data
+                    for (int j = 0; j < this.dataGridView2.Rows.Count; j++)
+                    {
+                        string strRowValue = "";
+
+                        for (int k = 0; k < this.dataGridView2.Columns.Count; k++)
+                        {
+                            if (this.dataGridView2.Rows[j].Cells[k].Value != null)
+                                strRowValue += this.dataGridView2.Rows[j].Cells[k].Value.ToString().Replace("\r\n", " ") + delimiter;
+                            else
+                                strRowValue += this.dataGridView2.Rows[j].Cells[k].Value + delimiter;
+                        }
+                        sw.WriteLine(strRowValue);
+                    }
+
+                    sw.Close();
+                    fa.Close();
+                    MessageBox.Show("下载成功 ！", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            } 
+
+            #endregion
+
+
 
         }
 
@@ -604,6 +736,13 @@ namespace FA_datawork_HRB
             InitialSystemInfo();
         }
 
+        private void ProcessLoggerInitialSystemInfo()
+        {
+            #region 初始化配置
+            ProcessLogger = log4net.LogManager.GetLogger("ProcessLogger");
+            ExceptionLogger = log4net.LogManager.GetLogger("SystemExceptionLogger");
 
+            #endregion
+        }
     }
 }
