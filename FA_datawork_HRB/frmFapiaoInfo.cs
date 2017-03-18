@@ -28,15 +28,41 @@ namespace FA_datawork_HRB
         private string IDclick;
         List<clsFAinfo> Flter_Result;
         List<clsFAinfo> dav1_Flter_Result;
+        List<clsuserinfo> userlist_Server;
         public frmFapiaoInfo(string username)
         {
             InitializeComponent();
+
+            ReadScope(username);
+
             InitialSystemInfo();
             ProcessLoggerInitialSystemInfo();
+            if (userlist_Server != null && userlist_Server.Count != 0)
+            {
+                if (userlist_Server[0].jigoudaima != null && userlist_Server[0].jigoudaima != "" && userlist_Server[0].jigoudaima != "所有")
+                {
+                    comboBox1.Text = userlist_Server[0].jigoudaima;
+                    comboBox1.Enabled = false;
+                }
+                else
+                {
+                    this.comboBox1.SelectedIndex = 0;
+                    this.comboBox2.SelectedIndex = 0;
+                }
+            }
 
-            this.comboBox1.SelectedIndex = 0;
-            this.comboBox2.SelectedIndex = 0;
+
+
             ProcessLogger.Fatal("print Initial" + DateTime.Now.ToString());
+        }
+
+        private void ReadScope(string username)
+        {
+            userlist_Server = new List<clsuserinfo>();
+            clsAllnew BusinessHelp = new clsAllnew();
+            userlist_Server = BusinessHelp.findUser(username);
+            //   comboBox1.Text = 
+
         }
         public class SortableBindingList<T> : BindingList<T>
         {
@@ -156,14 +182,26 @@ namespace FA_datawork_HRB
             Flter_Result = new List<clsFAinfo>();
             clsAllnew BusinessHelp = new clsAllnew();
             Result = BusinessHelp.findAll_Fapiao();
+            if (userlist_Server != null && userlist_Server.Count != 0 && userlist_Server[0].jigoudaima != null && userlist_Server[0].jigoudaima != "" && userlist_Server[0].jigoudaima != "所有")
+                Result = Result.FindAll(o => o.jigoudaima == userlist_Server[0].jigoudaima);
+
             Flter_Result = Result.Distinct(new ProductNoComparer()).ToList();
             var PMHZ = Flter_Result.OrderBy(s => s.danganhao).ToList();
+            //总结发票数量
+            int totalfapiaoshuliang = 0;
 
+            foreach (var emp in PMHZ)
+            {
+                var coutfapiaoshuliang = Result.FindAll(o => o.danganhao == emp.danganhao);
+                emp.fapiaoshuliang = coutfapiaoshuliang.Count.ToString();
+                totalfapiaoshuliang = totalfapiaoshuliang + coutfapiaoshuliang.Count;
+            }
             //if (Result)
             this.dataGridView2.AutoGenerateColumns = false;
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(PMHZ);
             this.bindingSource1.DataSource = sortablePendingOrderList;
             this.dataGridView2.DataSource = this.bindingSource1;
+            this.toolStripLabel1.Text = "档号汇总量:" + PMHZ.Count + "  件数汇总量:" + totalfapiaoshuliang;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,7 +230,7 @@ namespace FA_datawork_HRB
             }
             if (county.Length > 0 && county != "所有")
             {
-                filteredOrderList = filteredOrderList.FindAll(o => o.fapiaoleixing == county);
+                filteredOrderList = filteredOrderList.FindAll(o => o.fapiaoleixing == county.Substring(0, 2));
             }
 
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(filteredOrderList);
@@ -245,6 +283,7 @@ namespace FA_datawork_HRB
             dav1_Flter_Result = new List<clsFAinfo>();
 
             dav1_Flter_Result = filteredOrderList;
+            this.toolStripLabel2.Text = "数量：" + bindingSource2.Count.ToString();
 
         }
         //集合去重复
@@ -276,11 +315,13 @@ namespace FA_datawork_HRB
         {
             RowRemark = e.RowIndex;
             cloumn = e.ColumnIndex;
-            clsFAinfo item = new clsFAinfo();
-            item.danganhao = this.dataGridView2.Rows[RowRemark].Cells["档号列表"].EditedFormattedValue.ToString();
-            item.jigoudaima = this.dataGridView2.Rows[RowRemark].Cells["归档人"].EditedFormattedValue.ToString();
-            ApplyFilter3(item.danganhao, item.jigoudaima);
-
+            if (RowRemark != -1)
+            {
+                clsFAinfo item = new clsFAinfo();
+                item.danganhao = this.dataGridView2.Rows[RowRemark].Cells["档号列表"].EditedFormattedValue.ToString();
+                item.jigoudaima = this.dataGridView2.Rows[RowRemark].Cells["归档人"].EditedFormattedValue.ToString();
+                ApplyFilter3(item.danganhao, item.jigoudaima);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -565,13 +606,16 @@ namespace FA_datawork_HRB
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" && textBox2.Text == "")
+            if (textBox1.Text == "" && textBox2.Text == "" && textBox3.Text == "")
             {
                 MessageBox.Show("请至少填写一个查找的信息！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             clsAllnew BusinessHelp = new clsAllnew();
-            Result = BusinessHelp.findFapiao_user(textBox1.Text, textBox2.Text);
+            Result = BusinessHelp.findFapiao_user(textBox1.Text, textBox2.Text, textBox3.Text);
+            //只能读自己的发票信息
+            if (userlist_Server != null && userlist_Server.Count != 0 && userlist_Server[0].jigoudaima != null && userlist_Server[0].jigoudaima != "" && userlist_Server[0].jigoudaima != "所有")
+                Result = Result.FindAll(o => o.jigoudaima == userlist_Server[0].jigoudaima);
 
             Flter_Result = Result.Distinct(new ProductNoComparer()).ToList();
             var PMHZ = Flter_Result.OrderBy(s => s.danganhao).ToList();
@@ -581,12 +625,25 @@ namespace FA_datawork_HRB
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(PMHZ);
             this.bindingSource1.DataSource = sortablePendingOrderList;
             this.dataGridView2.DataSource = this.bindingSource1;
+            //总结发票数量
+            int totalfapiaoshuliang = 0;
+
+            foreach (var emp in PMHZ)
+            {
+                var coutfapiaoshuliang = Result.FindAll(o => o.danganhao == emp.danganhao);
+                emp.fapiaoshuliang = coutfapiaoshuliang.Count.ToString();
+                totalfapiaoshuliang = totalfapiaoshuliang + coutfapiaoshuliang.Count;
+            }
+            this.toolStripLabel1.Text = "档号汇总量:" + PMHZ.Count + "  件数汇总量:" + totalfapiaoshuliang;
+
 
             bindingSource2.DataSource = null;
             this.dataGridView1.AutoGenerateColumns = false;
             sortablePendingOrderList = new SortableBindingList<clsFAinfo>(Result);
             this.bindingSource2.DataSource = sortablePendingOrderList;
             this.dataGridView1.DataSource = this.bindingSource2;
+            this.toolStripLabel2.Text = "数量：" + bindingSource2.Count.ToString();
+
 
         }
 
@@ -604,7 +661,7 @@ namespace FA_datawork_HRB
             return;
             //下载两个 全屏信息
 
-            string strFileName="";
+            string strFileName = "";
             string strFileName2 = "";
             #region dav 1
             {
@@ -617,8 +674,8 @@ namespace FA_datawork_HRB
                     var saveFileDialog = new SaveFileDialog();
                     saveFileDialog.DefaultExt = ".csv";
                     saveFileDialog.Filter = "csv|*.csv";
-                     strFileName = "System  Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss");
-                     strFileName2 = strFileName;
+                    strFileName = "System  Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+                    strFileName2 = strFileName;
 
                     saveFileDialog.FileName = strFileName;
                     if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -667,7 +724,7 @@ namespace FA_datawork_HRB
 
                 }
 
-            } 
+            }
             #endregion
 
             #region dav 2
@@ -681,7 +738,7 @@ namespace FA_datawork_HRB
                     var saveFileDialog = new SaveFileDialog();
                     saveFileDialog.DefaultExt = ".csv";
                     saveFileDialog.Filter = "csv|*.csv";
-                    string strFileName1 = "System 2 Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss")+"";
+                    string strFileName1 = "System 2 Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "";
                     saveFileDialog.FileName = strFileName;
                     //if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                     //{
@@ -723,7 +780,7 @@ namespace FA_datawork_HRB
                     MessageBox.Show("下载成功 ！", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-            } 
+            }
 
             #endregion
 
@@ -743,6 +800,57 @@ namespace FA_datawork_HRB
             ExceptionLogger = log4net.LogManager.GetLogger("SystemExceptionLogger");
 
             #endregion
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            datetimepicker();
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+            datetimepicker();
+
+        }
+
+        private void datetimepicker()
+        {
+            string start_time = clsCommHelp.objToDateTime1(dateTimePicker1.Text);
+            string end_time = clsCommHelp.objToDateTime1(dateTimePicker2.Text);
+            clsAllnew BusinessHelp = new clsAllnew();
+            Result = BusinessHelp.findFapiao_user(start_time, end_time, "");
+            //只能读自己的发票信息
+            if (userlist_Server != null && userlist_Server.Count != 0 && userlist_Server[0].jigoudaima != null && userlist_Server[0].jigoudaima != "" && userlist_Server[0].jigoudaima != "所有")
+                Result = Result.FindAll(o => o.jigoudaima == userlist_Server[0].jigoudaima);
+
+            Flter_Result = Result.Distinct(new ProductNoComparer()).ToList();
+            var PMHZ = Flter_Result.OrderBy(s => s.danganhao).ToList();
+
+            //if (Result)
+            this.dataGridView2.AutoGenerateColumns = false;
+            sortablePendingOrderList = new SortableBindingList<clsFAinfo>(PMHZ);
+            this.bindingSource1.DataSource = sortablePendingOrderList;
+            this.dataGridView2.DataSource = this.bindingSource1;
+            //总结发票数量
+            int totalfapiaoshuliang = 0;
+
+            foreach (var emp in PMHZ)
+            {
+                var coutfapiaoshuliang = Result.FindAll(o => o.danganhao == emp.danganhao);
+                emp.fapiaoshuliang = coutfapiaoshuliang.Count.ToString();
+                totalfapiaoshuliang = totalfapiaoshuliang + coutfapiaoshuliang.Count;
+            }
+            this.toolStripLabel1.Text = "档号汇总量:" + PMHZ.Count + "  件数汇总量:" + totalfapiaoshuliang;
+
+
+            bindingSource2.DataSource = null;
+            this.dataGridView1.AutoGenerateColumns = false;
+            sortablePendingOrderList = new SortableBindingList<clsFAinfo>(Result);
+            this.bindingSource2.DataSource = sortablePendingOrderList;
+            this.dataGridView1.DataSource = this.bindingSource2;
+            this.toolStripLabel2.Text = "数量：" + bindingSource2.Count.ToString();
         }
     }
 }

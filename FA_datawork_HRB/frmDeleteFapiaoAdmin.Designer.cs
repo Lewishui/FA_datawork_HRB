@@ -39,26 +39,26 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 25);
+            this.label3.Location = new System.Drawing.Point(24, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 6;
             this.label3.Text = "档案号:";
             // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.Location = new System.Drawing.Point(106, 18);
+            this.textBox1.Location = new System.Drawing.Point(106, 17);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 26);
+            this.textBox1.Size = new System.Drawing.Size(206, 24);
             this.textBox1.TabIndex = 7;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(106, 101);
+            this.button1.Location = new System.Drawing.Point(106, 93);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
+            this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 8;
             this.button1.Text = "删除";
             this.button1.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(237, 101);
+            this.button2.Location = new System.Drawing.Point(237, 93);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
+            this.button2.Size = new System.Drawing.Size(75, 28);
             this.button2.TabIndex = 9;
             this.button2.Text = "关闭";
             this.button2.UseVisualStyleBackColor = true;
@@ -78,17 +78,18 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(106, 65);
+            this.comboBox1.Location = new System.Drawing.Point(106, 60);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 21);
+            this.comboBox1.Size = new System.Drawing.Size(206, 20);
             this.comboBox1.TabIndex = 10;
+            this.comboBox1.Visible = false;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // frmDeleteFapiaoAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 162);
+            this.ClientSize = new System.Drawing.Size(381, 150);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

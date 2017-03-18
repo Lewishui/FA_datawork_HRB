@@ -55,10 +55,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.stockNOTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.stockNOTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
@@ -70,6 +70,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -83,6 +84,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyToolStripMenuItem
@@ -258,6 +260,7 @@
             this.tableLayoutPanel4.Controls.Add(this.comboBox2, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox1, 5, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox2, 7, 0);
+            this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 8, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -326,7 +329,7 @@
             "21960",
             "21961",
             "21962"});
-            this.comboBox1.Location = new System.Drawing.Point(68, 6);
+            this.comboBox1.Location = new System.Drawing.Point(68, 5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
@@ -339,9 +342,9 @@
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "01",
-            "02"});
-            this.comboBox2.Location = new System.Drawing.Point(280, 6);
+            "01 专票",
+            "02 普票"});
+            this.comboBox2.Location = new System.Drawing.Point(280, 5);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(85, 21);
             this.comboBox2.TabIndex = 3;
@@ -386,6 +389,17 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(946, 34);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
+            // stockNOTextBox
+            // 
+            this.stockNOTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.stockNOTextBox.Enabled = false;
+            this.stockNOTextBox.Location = new System.Drawing.Point(283, 4);
+            this.stockNOTextBox.Multiline = true;
+            this.stockNOTextBox.Name = "stockNOTextBox";
+            this.stockNOTextBox.ReadOnly = true;
+            this.stockNOTextBox.Size = new System.Drawing.Size(245, 25);
+            this.stockNOTextBox.TabIndex = 41;
+            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -415,17 +429,6 @@
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "非连票号";
-            // 
-            // stockNOTextBox
-            // 
-            this.stockNOTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.stockNOTextBox.Enabled = false;
-            this.stockNOTextBox.Location = new System.Drawing.Point(283, 4);
-            this.stockNOTextBox.Multiline = true;
-            this.stockNOTextBox.Name = "stockNOTextBox";
-            this.stockNOTextBox.ReadOnly = true;
-            this.stockNOTextBox.Size = new System.Drawing.Size(245, 25);
-            this.stockNOTextBox.TabIndex = 41;
             // 
             // toolStrip2
             // 
@@ -518,6 +521,18 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox1.BackgroundImage = global::FA_datawork_HRB.Properties.Resources.createNewBackup;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(801, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 22);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // frmWrokflow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,6 +562,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,5 +611,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 机构代码;
         private System.Windows.Forms.DataGridViewTextBoxColumn 发票类型;
         private System.Windows.Forms.DataGridViewTextBoxColumn 录入时间;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

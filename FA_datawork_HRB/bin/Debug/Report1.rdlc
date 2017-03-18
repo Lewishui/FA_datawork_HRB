@@ -190,7 +190,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!fapiaoleixing.Value, "DataSet1")</Value>
+                <Value>=IIf(Fields!fapiaoleixing.Value &gt; 01,"普票","专票")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -280,7 +280,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Input_Date.Value, "DataSet1")</Value>
+                <Value>=Left(Fields!Input_Date.Value,8)</Value>
                 <Style />
               </TextRun>
             </TextRuns>

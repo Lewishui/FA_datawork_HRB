@@ -52,6 +52,7 @@ namespace FA.Buiness
                  { "Createdate", DateTime.Now.ToString("yyyy/MM/dd/HH")}, 
                  { "Btype", item.Btype} ,
                   { "denglushijian", item.denglushijian} ,
+                   { "jigoudaima", item.jigoudaima} ,
                  { "AdminIS", item.AdminIS} 
                  };
                 collection1.Insert(fruit_1);
@@ -161,6 +162,8 @@ namespace FA.Buiness
                     if (emp.Contains("AdminIS"))
                         item.AdminIS = (emp["AdminIS"].AsString);
 
+                    if (emp.Contains("jigoudaima"))
+                        item.jigoudaima = (emp["jigoudaima"].AsString);
 
                     #endregion
                     ClaimReport_Server.Add(item);
@@ -234,7 +237,8 @@ namespace FA.Buiness
                     if (emp.Contains("AdminIS"))
                         item.AdminIS = (emp["AdminIS"].AsString);
 
-
+                    if (emp.Contains("jigoudaima"))
+                        item.jigoudaima = (emp["jigoudaima"].AsString);
                     #endregion
                     ClaimReport_Server.Add(item);
                 }
@@ -281,7 +285,8 @@ namespace FA.Buiness
                  { "guidangrenzhanghao", item.guidangrenzhanghao} ,
                  { "jigoudaima", item.jigoudaima} ,
                  { "fapiaoleixing", item.fapiaoleixing} ,
-                 { "Input_Date", item.Input_Date} 
+                 { "Input_Date", item.Input_Date} ,
+                 { "Lurushijian", item.Input_Date.Substring(0,8)} 
                  };
                 collection1.Insert(fruit_1);
             }
@@ -398,7 +403,7 @@ namespace FA.Buiness
             }
             #endregion
         }
-        public List<clsFAinfo> findFapiao_user(string jigoudaima, string fapiaoleixing)
+        public List<clsFAinfo> findFapiao_user(string jigoudaima, string fapiaoleixing,string guidangren)
         {
 
             #region Read  database info server
@@ -473,6 +478,62 @@ namespace FA.Buiness
                     #endregion
                     ClaimReport_Server.Add(item);
                 }
+                query = new QueryDocument("guidangrenzhanghao", guidangren);              
+                foreach (BsonDocument emp in employees.Find(query))
+                {
+                    clsFAinfo item = new clsFAinfo();
+
+                    #region 数据
+                    if (emp.Contains("_id"))
+                        item.R_id = (emp["_id"].ToString());
+                    if (emp.Contains("fapiaohao"))
+                        item.fapiaohao = (emp["fapiaohao"].ToString());
+                    if (emp.Contains("danganhao"))
+                        item.danganhao = (emp["danganhao"].ToString());
+                    if (emp.Contains("bianhao"))
+                        item.bianhao = (emp["bianhao"].ToString());
+                    if (emp.Contains("guidangrenzhanghao"))
+                        item.guidangrenzhanghao = (emp["guidangrenzhanghao"].AsString);
+                    if (emp.Contains("Input_Date"))
+                        item.Input_Date = (emp["Input_Date"].AsString);
+                    if (emp.Contains("jigoudaima"))
+                        item.jigoudaima = (emp["jigoudaima"].AsString);
+                    if (emp.Contains("fapiaoleixing"))
+                        item.fapiaoleixing = (emp["fapiaoleixing"].AsString);
+
+
+                    #endregion
+                    ClaimReport_Server.Add(item);
+                }
+              //  query = new QueryDocument("guidangrenzhanghao", guidangren);
+                var query1 = Query.And(Query.GTE("Lurushijian", jigoudaima.Replace("/", "")), Query.LTE("Lurushijian", fapiaoleixing.Replace("/", "")));
+                foreach (BsonDocument emp in employees.Find(query1))
+                {
+                    clsFAinfo item = new clsFAinfo();
+
+                    #region 数据
+                    if (emp.Contains("_id"))
+                        item.R_id = (emp["_id"].ToString());
+                    if (emp.Contains("fapiaohao"))
+                        item.fapiaohao = (emp["fapiaohao"].ToString());
+                    if (emp.Contains("danganhao"))
+                        item.danganhao = (emp["danganhao"].ToString());
+                    if (emp.Contains("bianhao"))
+                        item.bianhao = (emp["bianhao"].ToString());
+                    if (emp.Contains("guidangrenzhanghao"))
+                        item.guidangrenzhanghao = (emp["guidangrenzhanghao"].AsString);
+                    if (emp.Contains("Input_Date"))
+                        item.Input_Date = (emp["Input_Date"].AsString);
+                    if (emp.Contains("jigoudaima"))
+                        item.jigoudaima = (emp["jigoudaima"].AsString);
+                    if (emp.Contains("fapiaoleixing"))
+                        item.fapiaoleixing = (emp["fapiaoleixing"].AsString);
+
+
+                    #endregion
+                    ClaimReport_Server.Add(item);
+                }
+
                 return ClaimReport_Server;
 
             }
@@ -561,8 +622,9 @@ namespace FA.Buiness
                 collection1.Update(query, update);
                 update = Update.Set("danganhao", item.danganhao);
                 collection1.Update(query, update);
-
-
+                update = Update.Set("Lurushijian", item.Input_Date.Substring(0,8));
+                collection1.Update(query, update);
+                
             }
         }
 

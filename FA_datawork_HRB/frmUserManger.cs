@@ -81,6 +81,9 @@ namespace FA_datawork_HRB
                 item.AdminIS = "true";
             else
                 item.AdminIS = "false";
+
+            item.jigoudaima = this.comboBox1.Text.Trim();
+
             userlist_Server.Add(item);
             clsAllnew BusinessHelp = new clsAllnew();
 

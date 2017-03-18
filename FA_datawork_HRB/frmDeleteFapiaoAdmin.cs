@@ -17,8 +17,8 @@ namespace FA_datawork_HRB
         public frmDeleteFapiaoAdmin(string  danganhao)
         {
             InitializeComponent();
-            this.textBox1.Text = danganhao;
-            InitialSystemInfo(danganhao);
+            //this.textBox1.Text = danganhao;
+            //InitialSystemInfo(danganhao);
 
         }
         private void InitialSystemInfo(string shipNO)

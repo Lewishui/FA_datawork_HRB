@@ -35,6 +35,7 @@ namespace FA_datawork_HRB
                 this.textBox1.Text = userlist_Server[0].name;
                 this.textBox2.Text = userlist_Server[0].password;
                 this.textBox3.Text = userlist_Server[0].password;
+                this.comboBox1.Text = userlist_Server[0].jigoudaima;
                 if (userlist_Server[0].Btype == "lock")
                     this.radioButton2.Checked = true;
                 else
@@ -79,6 +80,7 @@ namespace FA_datawork_HRB
                 item.AdminIS = "true";
             else
                 item.AdminIS = "false";
+            item.jigoudaima = this.comboBox1.Text.Trim();
             userlist_Server.Add(item);
             clsAllnew BusinessHelp = new clsAllnew();
 

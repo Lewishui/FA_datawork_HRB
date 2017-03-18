@@ -14,6 +14,7 @@ namespace FA.DB
         public string denglushijian { get; set; }
         public string Createdate { get; set; }
         public string AdminIS { get; set; }
+        public string jigoudaima { get; set; }
     }
 
     public class clsFAinfo
@@ -26,6 +27,13 @@ namespace FA.DB
         public string Input_Date { get; set; }
         public string jigoudaima { get; set; }
         public string fapiaoleixing { get; set; }
-
+        public string fapiaoshuliang { get; set; }
+    }
+    public class clslen_listinfo
+    {
+        public string R_id { get; set; }
+        public string Start_No { get; set; }
+        public string End_No { get; set; }
+        public int len { get; set; }
     }
 }

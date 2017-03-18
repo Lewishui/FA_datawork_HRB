@@ -71,3 +71,4 @@ D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_
 D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\RdlCompile.cache
 D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\RdlCompile.compiled
 C:\mysteap\work_office\ProjectOut\HRB\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmHelp.resources
+D:\Dev Project\HRB_PINGAN\FA_datawork_HRB\FA_datawork_HRB\obj\Debug\FA_datawork_HRB.frmHelp.resources
