@@ -163,22 +163,7 @@ namespace FA_datawork_HRB
         {
             try
             {
-                #region Noway
-                DateTime oldDate = DateTime.Now;
-                DateTime dt3;
-                string endday = DateTime.Now.ToString("yyyy/MM/dd");
-                dt3 = Convert.ToDateTime(endday);
-                DateTime dt2;
-                dt2 = Convert.ToDateTime("2017/03/18");
-
-                TimeSpan ts = dt2 - dt3;
-                int timeTotal = ts.Days;
-                if (timeTotal < 0)
-                {
-                    MessageBox.Show("Please Contact your administrator !");
-                    return;
-                }
-                #endregion
+            
                 NewMethoduserFind(txtSAPUserId.Text.Trim(), txtSAPPassword.Text.Trim());
                 if (logis != 0)
                 {
