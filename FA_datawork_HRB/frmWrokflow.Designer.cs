@@ -70,7 +70,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -84,7 +84,6 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyToolStripMenuItem
@@ -208,7 +207,7 @@
             // 
             // contextMenuStrip3
             // 
-            this.contextMenuStrip3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.contextMenuStrip3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.保存ToolStripMenuItem,
             this.notifyToolStripMenuItem});
@@ -260,7 +259,7 @@
             this.tableLayoutPanel4.Controls.Add(this.comboBox2, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox1, 5, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox2, 7, 0);
-            this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 8, 0);
+            this.tableLayoutPanel4.Controls.Add(this.button1, 8, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -449,7 +448,7 @@
             // 
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(58, 21);
+            this.toolStripButton5.Size = new System.Drawing.Size(58, 19);
             this.toolStripButton5.Text = "刷新";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -457,7 +456,7 @@
             // 
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(58, 21);
+            this.toolStripButton6.Size = new System.Drawing.Size(58, 19);
             this.toolStripButton6.Text = "下载";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
@@ -465,7 +464,7 @@
             // 
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 21);
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 19);
             this.toolStripButton1.Text = "清空";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -473,7 +472,7 @@
             // 
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(58, 21);
+            this.toolStripButton2.Size = new System.Drawing.Size(58, 19);
             this.toolStripButton2.Text = "档号删除";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -481,7 +480,7 @@
             // 
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(58, 21);
+            this.toolStripButton3.Size = new System.Drawing.Size(58, 19);
             this.toolStripButton3.Text = "归档";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -521,17 +520,16 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // pictureBox1
+            // button1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.BackgroundImage = global::FA_datawork_HRB.Properties.Resources.createNewBackup;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(801, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 22);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.Location = new System.Drawing.Point(801, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 26);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "添加";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmWrokflow
             // 
@@ -562,7 +560,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,6 +608,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 机构代码;
         private System.Windows.Forms.DataGridViewTextBoxColumn 发票类型;
         private System.Windows.Forms.DataGridViewTextBoxColumn 录入时间;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -320,17 +320,17 @@ namespace FA_datawork_HRB
                     }
                     else
                     {
-                        hezihao = "00001";                    
+                        hezihao = "00001";
                     }
 
                 }
                 else
                     hezihao = "00001";
-                if (comboBox2.Text!="")
-                this.stockNOTextBox.Text = comboBox1.Text + "-" + comboBox2.Text.Substring(0, 2) + "-" + DateTime.Now.ToString("yyyyMMdd") + "-" + hezihao;
+                if (comboBox2.Text != "")
+                    this.stockNOTextBox.Text = comboBox1.Text + "-" + comboBox2.Text.Substring(0, 2) + "-" + DateTime.Now.ToString("yyyyMMdd") + "-" + hezihao;
                 else
                     this.stockNOTextBox.Text = comboBox1.Text + "-" + "" + "-" + DateTime.Now.ToString("yyyyMMdd") + "-" + hezihao;
-               
+
             }
             catch (Exception ex)
             {
@@ -344,20 +344,41 @@ namespace FA_datawork_HRB
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            int len = Convert.ToInt32(textBox2.Text) - Convert.ToInt32(textBox1.Text) + 1;
-            if (textBox3.Text != "")
+            if (textBox2.Text != "" && textBox1.Text != "")
             {
-                string[] feilianxifapiao = System.Text.RegularExpressions.Regex.Split(textBox3.Text, " ");
+                int len = Convert.ToInt32(textBox2.Text) - Convert.ToInt32(textBox1.Text) + 1;
+                if (len < 0)
+                {
+                    errorProvider1.SetError(textBox2, String.Format("结束发票号不能小于起始发票号！"));
+                    return;
 
-                len = len + feilianxifapiao.Length;
-            }
+                }
 
-            if (len < 0)
-                errorProvider1.SetError(textBox2, String.Format("结束发票号不能小于起始发票号！"));
-            else
-            {
-                toolStripLabel1.Text = "共计发票条目：" + len;
-                errorProvider1.SetError(textBox2, String.Format(""));
+
+                //int len12 = 0;
+                if (len_list != null)
+                {
+                    foreach (clslen_listinfo itemin in len_list)
+                    {
+                        len = len + Convert.ToInt32(itemin.End_No) - Convert.ToInt32(itemin.Start_No) + 1;
+                    }
+                }
+                //old
+
+                if (textBox3.Text != "")
+                {
+                    string[] feilianxifapiao = System.Text.RegularExpressions.Regex.Split(textBox3.Text, " ");
+
+                    len = len + feilianxifapiao.Length;
+                }
+
+                if (len < 0)
+                    errorProvider1.SetError(textBox2, String.Format("结束发票号不能小于起始发票号！"));
+                else
+                {
+                    toolStripLabel1.Text = "共计发票条目：" + len;
+                    errorProvider1.SetError(textBox2, String.Format(""));
+                }
             }
 
         }
@@ -637,7 +658,9 @@ namespace FA_datawork_HRB
             this.dataGridView1.BeginEdit(true);//将单元格设为编辑状态
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != "" && this.textBox2.Text != "")
             {
@@ -648,12 +671,12 @@ namespace FA_datawork_HRB
                 item.End_No = textBox2.Text;
                 #region 判断逻辑
 
-                clslen_listinfo stock = this.len_list.Find(o => (o.Start_No == textBox1.Text || o.End_No == textBox2.Text));
-                if (stock != null)
-                {
-                    MessageBox.Show("不能本次重复添加相同起始发票和结束发票！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //clslen_listinfo stock = this.len_list.Find(o => (o.Start_No == textBox1.Text || o.End_No == textBox2.Text));
+                //if (stock != null)
+                //{
+                //    MessageBox.Show("不能本次重复添加相同起始发票和结束发票！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
                 #endregion
 
@@ -676,6 +699,116 @@ namespace FA_datawork_HRB
                     toolStripLabel1.BackColor = System.Drawing.Color.Red;
                 }
             }
+
+            #region add show
+            {
+                if (stockNOTextBox.Text == "")
+                {
+                    MessageBox.Show("档号不能为空，请选择机构代码&发票类型", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                List<clsFAinfo> Result = new List<clsFAinfo>();
+                int sss = 0;
+                if (textBox1.Text != "" && this.textBox2.Text != "")
+                {
+                    //多次段位添加
+                    if (len_list != null && len_list.Count > 0)
+                    {
+                        int rowindex = 0;
+                        foreach (clslen_listinfo itemin in len_list)
+                        {
+                            int len = Convert.ToInt32(itemin.End_No) - Convert.ToInt32(itemin.Start_No);
+                            if (len < 0)
+                                return;
+
+                            for (int i = 0; i <= len; i++)
+                            {
+                                clsFAinfo item = new clsFAinfo();
+                                int ssl = Convert.ToInt32(itemin.Start_No) + i;
+
+                                item.fapiaohao = ssl.ToString();
+                                item.jigoudaima = comboBox1.Text;
+                                item.fapiaoleixing = comboBox2.Text.Substring(0, 2);
+                                item.danganhao = stockNOTextBox.Text;
+                                item.Input_Date = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                                item.guidangrenzhanghao = guidangren;
+                                sss = rowindex + 1;
+                                item.bianhao = sss.ToString().PadLeft(4, '0');
+
+                                Result.Add(item);
+                                rowindex++;
+
+
+                            }
+
+                        }
+                    }
+                    else
+                    {
+
+                        int len = Convert.ToInt32(textBox2.Text) - Convert.ToInt32(textBox1.Text);
+                        if (len < 0)
+                            return;
+
+                        for (int i = 0; i <= len; i++)
+                        {
+                            clsFAinfo item = new clsFAinfo();
+                            int ssl = Convert.ToInt32(textBox1.Text) + i;
+
+                            item.fapiaohao = ssl.ToString();
+                            item.jigoudaima = comboBox1.Text;
+                            item.fapiaoleixing = comboBox2.Text.Substring(0, 2);
+                            item.danganhao = stockNOTextBox.Text;
+                            item.Input_Date = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                            item.guidangrenzhanghao = guidangren;
+                            sss = i + 1;
+                            item.bianhao = sss.ToString().PadLeft(4, '0');
+
+                            Result.Add(item);
+
+
+                        }
+                    }
+
+                }
+                if (this.textBox3.Text != "")
+                {
+                    if (textBox3.Text != "")
+                    {
+                        string[] feilianxifapiao = System.Text.RegularExpressions.Regex.Split(textBox3.Text, " ");
+
+                        for (int i = 0; i < feilianxifapiao.Length; i++)
+                        {
+                            clsFAinfo item = new clsFAinfo();
+
+                            item.fapiaohao = feilianxifapiao[i];
+                            item.jigoudaima = comboBox1.Text;
+                            item.fapiaoleixing = comboBox2.Text.Substring(0, 2);
+                            item.danganhao = stockNOTextBox.Text;
+                            item.Input_Date = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                            item.guidangrenzhanghao = guidangren;
+                            sss = sss + 1;
+                            item.bianhao = sss.ToString().PadLeft(4, '0');
+                            Result.Add(item);
+                        }
+                    }
+                }
+                //清空段位的 集合
+
+                //len_list = new List<clslen_listinfo>();
+
+                if (Result.Count != 0)
+                {
+                    toolStripLabel1.Text = "发票条目：" + Result.Count;
+                    //InitialSystemInfo();
+                    this.dataGridView1.AutoGenerateColumns = false;
+                    sortablePendingOrderList = new SortableBindingList<clsFAinfo>(Result);
+                    this.bindingSource1.DataSource = sortablePendingOrderList;
+                    this.dataGridView1.DataSource = this.bindingSource1;
+                }
+            }
+
+            #endregion
         }
     }
 }
