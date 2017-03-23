@@ -31,14 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.帐号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.管理员 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.登录时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.notifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.帐号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.管理员 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.登录时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.机构代码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -53,7 +54,8 @@
             this.帐号,
             this.管理员,
             this.状态,
-            this.登录时间});
+            this.登录时间,
+            this.机构代码});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip3;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -69,6 +71,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(670, 419);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notifyToolStripMenuItem,
+            this.编辑ToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip1";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(101, 48);
+            // 
+            // notifyToolStripMenuItem
+            // 
+            this.notifyToolStripMenuItem.Name = "notifyToolStripMenuItem";
+            this.notifyToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.notifyToolStripMenuItem.Text = "删除";
+            this.notifyToolStripMenuItem.Click += new System.EventHandler(this.notifyToolStripMenuItem_Click);
+            // 
+            // 编辑ToolStripMenuItem
+            // 
+            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.编辑ToolStripMenuItem.Text = "编辑";
+            this.编辑ToolStripMenuItem.Click += new System.EventHandler(this.编辑ToolStripMenuItem_Click);
             // 
             // 帐号
             // 
@@ -94,28 +119,11 @@
             this.登录时间.HeaderText = "登录时间";
             this.登录时间.Name = "登录时间";
             // 
-            // contextMenuStrip3
+            // 机构代码
             // 
-            this.contextMenuStrip3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.notifyToolStripMenuItem,
-            this.编辑ToolStripMenuItem});
-            this.contextMenuStrip3.Name = "contextMenuStrip1";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(101, 48);
-            // 
-            // notifyToolStripMenuItem
-            // 
-            this.notifyToolStripMenuItem.Name = "notifyToolStripMenuItem";
-            this.notifyToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.notifyToolStripMenuItem.Text = "删除";
-            this.notifyToolStripMenuItem.Click += new System.EventHandler(this.notifyToolStripMenuItem_Click);
-            // 
-            // 编辑ToolStripMenuItem
-            // 
-            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
-            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.编辑ToolStripMenuItem.Text = "编辑";
-            this.编辑ToolStripMenuItem.Click += new System.EventHandler(this.编辑ToolStripMenuItem_Click);
+            this.机构代码.DataPropertyName = "jigoudaima";
+            this.机构代码.HeaderText = "机构代码";
+            this.机构代码.Name = "机构代码";
             // 
             // frmViewUser
             // 
@@ -137,12 +145,13 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem notifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
+        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn 帐号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 管理员;
         private System.Windows.Forms.DataGridViewTextBoxColumn 状态;
         private System.Windows.Forms.DataGridViewTextBoxColumn 登录时间;
-        private System.Windows.Forms.ToolStripMenuItem notifyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 机构代码;
     }
 }

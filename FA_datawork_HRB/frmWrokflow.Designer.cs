@@ -54,11 +54,12 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.stockNOTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
@@ -70,7 +71,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -368,6 +368,17 @@
             this.textBox2.TabIndex = 7;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.Location = new System.Drawing.Point(801, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 26);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "添加";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 5;
@@ -376,10 +387,10 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 415F));
-            this.tableLayoutPanel5.Controls.Add(this.stockNOTextBox, 3, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label6, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.textBox3, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label5, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.stockNOTextBox, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.textBox3, 3, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -392,18 +403,29 @@
             // 
             this.stockNOTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.stockNOTextBox.Enabled = false;
-            this.stockNOTextBox.Location = new System.Drawing.Point(283, 4);
+            this.stockNOTextBox.Location = new System.Drawing.Point(67, 4);
             this.stockNOTextBox.Multiline = true;
             this.stockNOTextBox.Name = "stockNOTextBox";
             this.stockNOTextBox.ReadOnly = true;
-            this.stockNOTextBox.Size = new System.Drawing.Size(245, 25);
+            this.stockNOTextBox.Size = new System.Drawing.Size(129, 25);
             this.stockNOTextBox.TabIndex = 41;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(212, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "非连票号";
+            this.label5.Visible = false;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(202, 10);
+            this.label6.Location = new System.Drawing.Point(3, 10);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 42;
@@ -412,22 +434,13 @@
             // textBox3
             // 
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox3.Location = new System.Drawing.Point(67, 3);
+            this.textBox3.Location = new System.Drawing.Point(283, 3);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(129, 28);
             this.textBox3.TabIndex = 6;
+            this.textBox3.Visible = false;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "非连票号";
             // 
             // toolStrip2
             // 
@@ -520,17 +533,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.Location = new System.Drawing.Point(801, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 26);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "添加";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmWrokflow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -594,8 +596,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox stockNOTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolStrip toolStrip2;
@@ -609,5 +609,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 发票类型;
         private System.Windows.Forms.DataGridViewTextBoxColumn 录入时间;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

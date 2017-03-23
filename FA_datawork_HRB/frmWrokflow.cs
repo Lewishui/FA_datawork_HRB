@@ -19,6 +19,8 @@ namespace FA_datawork_HRB
 {
     public partial class frmWrokflow : DockContent
     {
+        public log4net.ILog ProcessLogger;
+        public log4net.ILog ExceptionLogger;
         List<clsFAinfo> Result;
         private string hezihao;
         string guidangren;
@@ -29,10 +31,11 @@ namespace FA_datawork_HRB
         int logis;
         private string ipadress;
         private List<clslen_listinfo> len_list;
-
+        List<clsuserinfo> userlist_Server;
         public frmWrokflow(string username)
         {
             InitializeComponent();
+            ProcessLoggerInitialSystemInfo();
             string path = AppDomain.CurrentDomain.BaseDirectory + "System\\IP.txt";
 
             string[] fileText = File.ReadAllLines(path);
@@ -45,9 +48,39 @@ namespace FA_datawork_HRB
             NewMethoduserFind(username);
 
             len_list = new List<clslen_listinfo>();
+             ReadScope(username);
 
+            if (userlist_Server != null && userlist_Server.Count != 0)
+            {
+                if (userlist_Server[0].jigoudaima != null && userlist_Server[0].jigoudaima != "" && userlist_Server[0].jigoudaima != "所有")
+                {
+                    comboBox1.Text = userlist_Server[0].jigoudaima;
+                    comboBox1.Enabled = false;
+                }
+                else
+                {
+                    this.comboBox1.SelectedIndex = 0;
+                    this.comboBox2.SelectedIndex = 0;
+                }
+            }
+        }
+        private void ProcessLoggerInitialSystemInfo()
+        {
+            #region 初始化配置
+            ProcessLogger = log4net.LogManager.GetLogger("ProcessLogger");
+            ExceptionLogger = log4net.LogManager.GetLogger("SystemExceptionLogger");
+
+            #endregion
+        }
+        private void ReadScope(string username)
+        {
+            userlist_Server = new List<clsuserinfo>();
+            clsAllnew BusinessHelp = new clsAllnew();
+            userlist_Server = BusinessHelp.findUser(username);
+            //   comboBox1.Text = 
 
         }
+
         private void InitialSystemInfo()
         {
 
@@ -208,7 +241,18 @@ namespace FA_datawork_HRB
                             clsFAinfo item = new clsFAinfo();
                             int ssl = Convert.ToInt32(itemin.Start_No) + i;
 
-                            item.fapiaohao = ssl.ToString();
+                            //不全填入发票和以0开头的位数
+
+                            int weishu0 = itemin.Start_No.Length - Convert.ToInt32(itemin.Start_No).ToString().Length;
+                            string ssl_string = ssl.ToString();
+
+                            if (weishu0 > 0)
+                            {
+                                for (int j = 0; j < weishu0; j++)
+                                    ssl_string = "0" + ssl_string;
+                            }
+
+                            item.fapiaohao = ssl_string;
                             item.jigoudaima = comboBox1.Text;
                             item.fapiaoleixing = comboBox2.Text.Substring(0, 2);
                             item.danganhao = stockNOTextBox.Text;
@@ -471,8 +515,9 @@ namespace FA_datawork_HRB
             this.textBox2.Text = "";
             this.textBox3.Text = "";
             stockNOTextBox.Text = "";
-
-
+            len_list = new List<clslen_listinfo>();
+            this.bindingSource1.DataSource = null;
+            this.dataGridView1.DataSource = this.bindingSource1;
 
         }
 
@@ -657,8 +702,7 @@ namespace FA_datawork_HRB
             this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];//获取当前单元格
             this.dataGridView1.BeginEdit(true);//将单元格设为编辑状态
         }
-
-
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -725,8 +769,19 @@ namespace FA_datawork_HRB
                             {
                                 clsFAinfo item = new clsFAinfo();
                                 int ssl = Convert.ToInt32(itemin.Start_No) + i;
+                                //不全填入发票和以0开头的位数
 
-                                item.fapiaohao = ssl.ToString();
+                                int weishu0 = itemin.Start_No.Length - Convert.ToInt32(itemin.Start_No).ToString().Length;
+                                string ssl_string = ssl.ToString();
+
+                                if (weishu0 > 0)
+                                {
+                                    for (int j = 0; j < weishu0;j++ )
+                                        ssl_string = "0" + ssl_string ;
+                                }
+
+
+                                item.fapiaohao = ssl_string;
                                 item.jigoudaima = comboBox1.Text;
                                 item.fapiaoleixing = comboBox2.Text.Substring(0, 2);
                                 item.danganhao = stockNOTextBox.Text;

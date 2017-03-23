@@ -1,0 +1,39 @@
+2017-03-23 08:46:10,590 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 08:46:10
+2017-03-23 08:46:10,644 [10] FATAL ProcessLogger [(null)] - login3/23/2017 08:46:10
+2017-03-23 08:46:25,166 [10] FATAL ProcessLogger [(null)] - print Initial3/23/2017 08:46:25
+2017-03-23 08:46:41,430 [10] FATAL ProcessLogger [(null)] - 8948 Down Initial3/23/2017 08:46:41
+2017-03-23 08:46:43,012 [10] FATAL ProcessLogger [(null)] - 8949  Input Initial3/23/2017 08:46:43
+2017-03-23 08:49:53,716 [9] FATAL ProcessLogger [(null)] - System Start 3/23/2017 08:49:53
+2017-03-23 08:49:53,791 [9] FATAL ProcessLogger [(null)] - login3/23/2017 08:49:53
+2017-03-23 08:50:05,050 [9] FATAL ProcessLogger [(null)] - print Initial3/23/2017 08:50:05
+2017-03-23 08:50:12,182 [9] FATAL ProcessLogger [(null)] - 8948 Down Initial3/23/2017 08:50:12
+2017-03-23 08:50:13,301 [9] FATAL ProcessLogger [(null)] - 8949  Input Initial3/23/2017 08:50:13
+2017-03-23 08:52:10,650 [9] FATAL ProcessLogger [(null)] - 8950  Output Initial3/23/2017 08:52:10
+2017-03-23 08:52:27,748 [9] FATAL ProcessLogger [(null)] - 8948 Down Initial3/23/2017 08:52:27
+2017-03-23 08:52:28,859 [9] FATAL ProcessLogger [(null)] - 8949  Input Initial3/23/2017 08:52:28
+2017-03-23 08:52:44,797 [9] FATAL ProcessLogger [(null)] - 8950  Output Initial3/23/2017 08:52:44
+2017-03-23 08:53:46,545 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 08:53:46
+2017-03-23 08:53:46,628 [10] FATAL ProcessLogger [(null)] - login3/23/2017 08:53:46
+2017-03-23 08:53:56,293 [10] FATAL ProcessLogger [(null)] - print Initial3/23/2017 08:53:56
+2017-03-23 08:56:48,332 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 08:56:48
+2017-03-23 08:56:48,402 [10] FATAL ProcessLogger [(null)] - login3/23/2017 08:56:48
+2017-03-23 08:57:36,066 [9] FATAL ProcessLogger [(null)] - System Start 3/23/2017 08:57:36
+2017-03-23 08:57:36,158 [9] FATAL ProcessLogger [(null)] - login3/23/2017 08:57:36
+2017-03-23 09:00:25,830 [9] FATAL ProcessLogger [(null)] - System Start 3/23/2017 09:00:25
+2017-03-23 09:00:25,907 [9] FATAL ProcessLogger [(null)] - login3/23/2017 09:00:25
+2017-03-23 09:00:49,351 [9] FATAL ProcessLogger [(null)] - System Start 3/23/2017 09:00:49
+2017-03-23 09:00:49,416 [9] FATAL ProcessLogger [(null)] - login3/23/2017 09:00:49
+2017-03-23 09:01:08,728 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 09:01:08
+2017-03-23 09:01:08,798 [10] FATAL ProcessLogger [(null)] - login3/23/2017 09:01:08
+2017-03-23 09:01:40,580 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 09:01:40
+2017-03-23 09:01:40,657 [10] FATAL ProcessLogger [(null)] - login3/23/2017 09:01:40
+2017-03-23 09:05:00,933 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 09:05:00
+2017-03-23 09:05:01,016 [10] FATAL ProcessLogger [(null)] - login3/23/2017 09:05:01
+2017-03-23 09:05:35,188 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 09:05:35
+2017-03-23 09:05:35,251 [10] FATAL ProcessLogger [(null)] - login3/23/2017 09:05:35
+2017-03-23 09:05:46,729 [10] FATAL ProcessLogger [(null)] - print Initial3/23/2017 09:05:46
+2017-03-23 09:37:25,233 [10] FATAL ProcessLogger [(null)] - print Initial3/23/2017 09:37:25
+2017-03-23 09:38:28,124 [10] FATAL ProcessLogger [(null)] - print Initial3/23/2017 09:38:28
+2017-03-23 09:38:28,138 [10] FATAL ProcessLogger [(null)] - 109723 load file3/23/2017 09:38:28
+2017-03-23 09:38:28,139 [10] FATAL ProcessLogger [(null)] - 109724 Add file3/23/2017 09:38:28
+2017-03-23 09:38:32,106 [10] FATAL ProcessLogger [(null)] - 109724 display file3/23/2017 09:38:32

@@ -401,27 +401,31 @@ namespace FA_datawork_HRB
                     string fapiaoleixingin = "";
                     string guidangren = "";
                     string danghao = "";
-
+                    string guidangshijian = "";
                     foreach (clsFAinfo item in Result)
                     {
                         fapiaoleixingin = item.fapiaoleixing;
                         guidangren = item.guidangrenzhanghao;
+                        danghao = item.danganhao;
+                        if (item.Input_Date != null && item.Input_Date.Length > 8)
+                            guidangshijian = item.Input_Date.Substring(0, 8);
 
                         RowIndex++;
 
 
-                        ExcelSheet.Cells[RowIndex, 1] = item.fapiaohao;
-                        ExcelSheet.Cells[RowIndex, 2] = item.bianhao;
+                        ExcelSheet.Cells[RowIndex, 1] = "'" + item.fapiaohao;
+                        ExcelSheet.Cells[RowIndex, 2] ="'"+ item.bianhao;
                         //ExcelSheet.Cells[RowIndex, 3] = item.fapiaohao;
 
                     }
-                    ExcelApp.Visible = true;
-                    ExcelApp.ScreenUpdating = true;
+                    //ExcelApp.Visible = true;
+                    //ExcelApp.ScreenUpdating = true;
 
                     ExcelSheet.Cells[1, 1] = "总件数：" + Result.Count.ToString();
                     ExcelSheet.Cells[2, 1] = "发票类型：" + fapiaoleixingin;
                     ExcelSheet.Cells[3, 1] = "归档人：" + guidangren;
                     ExcelSheet.Cells[4, 1] = "档号：" + danghao;
+                    ExcelSheet.Cells[5, 1] = "归档时间：" + guidangshijian;
 
                     //直接打印
                     //ExcelApp.ActiveWindow.View = Excel.XlWindowView.xlPageBreakPreview;
