@@ -37,3 +37,7 @@
 2017-03-23 09:38:28,138 [10] FATAL ProcessLogger [(null)] - 109723 load file3/23/2017 09:38:28
 2017-03-23 09:38:28,139 [10] FATAL ProcessLogger [(null)] - 109724 Add file3/23/2017 09:38:28
 2017-03-23 09:38:32,106 [10] FATAL ProcessLogger [(null)] - 109724 display file3/23/2017 09:38:32
+2017-03-23 22:23:41,166 [10] FATAL ProcessLogger [(null)] - System Start 3/23/2017 22:23:41
+2017-03-23 22:23:41,244 [10] FATAL ProcessLogger [(null)] - login3/23/2017 22:23:41
+2017-03-23 22:24:05,571 [9] FATAL ProcessLogger [(null)] - System Start 3/23/2017 22:24:05
+2017-03-23 22:24:05,638 [9] FATAL ProcessLogger [(null)] - login3/23/2017 22:24:05
