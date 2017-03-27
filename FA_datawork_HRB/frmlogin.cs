@@ -586,5 +586,24 @@ namespace FA_datawork_HRB
 
             frmHelp.Show(this.dockPanel2);
         }
+
+        private void eToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                NewMethod1();
+
+                MessageBox.Show("导入成功,可以使用了！");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统配置不正确，请重新安装或联系管理员" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+                throw;
+            }
+        }
     }
 }

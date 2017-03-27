@@ -62,9 +62,10 @@
             this.追踪分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.一键配置初始化信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开本地目录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dockPanel2 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.关于系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -194,7 +195,8 @@
             this.追踪分析ToolStripMenuItem,
             this.一键配置初始化信息ToolStripMenuItem,
             this.打开本地目录ToolStripMenuItem,
-            this.关于系统ToolStripMenuItem});
+            this.关于系统ToolStripMenuItem,
+            this.eToolStripMenuItem});
             this.toolStripDropDownButton3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
             this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -222,6 +224,13 @@
             this.打开本地目录ToolStripMenuItem.Size = new System.Drawing.Size(298, 26);
             this.打开本地目录ToolStripMenuItem.Text = "打开本地目录";
             this.打开本地目录ToolStripMenuItem.Click += new System.EventHandler(this.打开本地目录ToolStripMenuItem_Click);
+            // 
+            // 关于系统ToolStripMenuItem
+            // 
+            this.关于系统ToolStripMenuItem.Name = "关于系统ToolStripMenuItem";
+            this.关于系统ToolStripMenuItem.Size = new System.Drawing.Size(298, 26);
+            this.关于系统ToolStripMenuItem.Text = "关于系统";
+            this.关于系统ToolStripMenuItem.Click += new System.EventHandler(this.关于系统ToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -293,12 +302,12 @@
             this.dockPanel2.Skin = dockPanelSkin1;
             this.dockPanel2.TabIndex = 9;
             // 
-            // 关于系统ToolStripMenuItem
+            // eToolStripMenuItem
             // 
-            this.关于系统ToolStripMenuItem.Name = "关于系统ToolStripMenuItem";
-            this.关于系统ToolStripMenuItem.Size = new System.Drawing.Size(298, 26);
-            this.关于系统ToolStripMenuItem.Text = "关于系统";
-            this.关于系统ToolStripMenuItem.Click += new System.EventHandler(this.关于系统ToolStripMenuItem_Click);
+            this.eToolStripMenuItem.Name = "eToolStripMenuItem";
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(298, 26);
+            this.eToolStripMenuItem.Text = "配置初始化用户";
+            this.eToolStripMenuItem.Click += new System.EventHandler(this.eToolStripMenuItem_Click);
             // 
             // frmlogin
             // 
@@ -340,6 +349,7 @@
         private System.Windows.Forms.ToolStripMenuItem 一键配置初始化信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开本地目录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于系统ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
     }
 }
 
