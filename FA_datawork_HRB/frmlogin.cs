@@ -46,11 +46,11 @@ namespace FA_datawork_HRB
             InitialPassword();
             ProcessLogger.Fatal("login" + DateTime.Now.ToString());
             string path = AppDomain.CurrentDomain.BaseDirectory + "System\\IP.txt";
-              
+
             string[] fileText = File.ReadAllLines(path);
-            ipadress = "mongodb://"+fileText[0];
+            ipadress = "mongodb://" + fileText[0];
             this.Text = "PA 财务系统 " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-          
+
         }
         private void InitialSystemInfo()
         {
@@ -163,14 +163,16 @@ namespace FA_datawork_HRB
         {
             try
             {
-            
+                ProcessLogger.Fatal("07932:System Login Start " + DateTime.Now.ToString());
                 NewMethoduserFind(txtSAPUserId.Text.Trim(), txtSAPPassword.Text.Trim());
+
                 if (logis != 0)
                 {
+                    ProcessLogger.Fatal("07933:System Login Start " + DateTime.Now.ToString());
                     this.WindowState = FormWindowState.Maximized;
                     if (chkSaveInfo.Checked == true)
                         saveUserAndPassword();
-
+                    ProcessLogger.Fatal("07934:System Login Start " + DateTime.Now.ToString());
                     #region 更新登录时间
                     List<clsuserinfo> userlist_Server = new List<clsuserinfo>();
                     clsuserinfo item = new clsuserinfo();
@@ -183,13 +185,13 @@ namespace FA_datawork_HRB
                     clsAllnew BusinessHelp = new clsAllnew();
 
                     BusinessHelp.updateLoginTime_Server(userlist_Server);
-
+                    ProcessLogger.Fatal("07935:System Login Start " + DateTime.Now.ToString());
                     #endregion
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("登录失败，请查看根目录下的System文件夹中IP.txt中服务器IP 地址是否正确！","错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("登录失败，请查看根目录下的System文件夹中IP.txt中服务器IP 地址是否正确！" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
                 throw ex;
@@ -198,67 +200,78 @@ namespace FA_datawork_HRB
         private bool NewMethoduserFind(string user, string pass)
         {
 
-            string connectionString = "mongodb://127.0.0.1";
-            connectionString = ipadress;
-
-            MongoServer server = MongoServer.Create(connectionString);
-            MongoDatabase db1 = server.GetDatabase("FA_datawork_HRB");
-            MongoCollection collection1 = db1.GetCollection("FA_datawork_HRB_User");
-            MongoCollection<BsonDocument> employees = db1.GetCollection<BsonDocument>("FA_datawork_HRB_User");
-
-            ///精确查找
-            var query = new QueryDocument { { "name", user } };
-            //   foreach (var emp in data)
-            logis = 0;
-            foreach (BsonDocument emp in employees.Find(query))
+            try
             {
-                string Useramin = "";
-                string lockis = "";
-                string Pass = (emp["password"].AsString);
-                string User = (emp["name"].AsString);
-                if (emp.Contains("AdminIS"))
-                    Useramin = (emp["AdminIS"].AsString);
-                if (emp.Contains("Btype"))
-                    lockis = (emp["Btype"].AsString);
-                if (lockis == "lock")
+                string connectionString = "mongodb://127.0.0.1";
+                connectionString = ipadress;
+
+                MongoServer server = MongoServer.Create(connectionString);
+                MongoDatabase db1 = server.GetDatabase("FA_datawork_HRB");
+                MongoCollection collection1 = db1.GetCollection("FA_datawork_HRB_User");
+                MongoCollection<BsonDocument> employees = db1.GetCollection<BsonDocument>("FA_datawork_HRB_User");
+
+                ///精确查找
+                var query = new QueryDocument { { "name", user } };
+                //   foreach (var emp in data)
+                logis = 0;
+                foreach (BsonDocument emp in employees.Find(query))
                 {
-                    MessageBox.Show("登录失败,账户已被锁定，请重试或联系系统管理员，谢谢", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                if (Pass.ToString().Trim() == pass.Trim() && User.ToString().Trim() == user.Trim())
-                    if (Useramin == "true")
+                    string Useramin = "";
+                    string lockis = "";
+                    string Pass = (emp["password"].AsString);
+                    string User = (emp["name"].AsString);
+                    if (emp.Contains("AdminIS"))
+                        Useramin = (emp["AdminIS"].AsString);
+                    if (emp.Contains("Btype"))
+                        lockis = (emp["Btype"].AsString);
+                    if (lockis == "lock")
                     {
-                        toolStripDropDownButton1.Enabled = true;
-                        toolStripDropDownButton3.Enabled = true;
-                        toolStripDropDownButton2.Enabled = true;
-                        //一键配置ToolStripMenuItem.Enabled = true;
-                        pBBToolStripMenuItem.Enabled = true;
-                        修改登录信息ToolStripMenuItem.Enabled = true;
-                        logis++;
+                        MessageBox.Show("登录失败,账户已被锁定，请重试或联系系统管理员，谢谢", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
                     }
-                    else
-                    {
-                        toolStripDropDownButton1.Enabled = true;
-                        toolStripDropDownButton3.Enabled = true;
-                        toolStripDropDownButton2.Enabled = true;
+                    if (Pass.ToString().Trim() == pass.Trim() && User.ToString().Trim() == user.Trim())
+                        if (Useramin == "true")
+                        {
+                            toolStripDropDownButton1.Enabled = true;
+                            toolStripDropDownButton3.Enabled = true;
+                            toolStripDropDownButton2.Enabled = true;
+                            //一键配置ToolStripMenuItem.Enabled = true;
+                            pBBToolStripMenuItem.Enabled = true;
+                            修改登录信息ToolStripMenuItem.Enabled = true;
+                            logis++;
+                        }
+                        else
+                        {
+                            toolStripDropDownButton1.Enabled = true;
+                            toolStripDropDownButton3.Enabled = true;
+                            toolStripDropDownButton2.Enabled = true;
 
-                        修改登录信息ToolStripMenuItem.Enabled = true;
-                        logis++;
-                        // return false;
-                    }
-            }
-            if (logis == 0)
-            {
-                MessageBox.Show("登录失败，请重试或联系系统管理员，谢谢", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            修改登录信息ToolStripMenuItem.Enabled = true;
+                            logis++;
+                            // return false;
+                        }
+                }
+                if (logis == 0)
+                {
+                    MessageBox.Show("登录失败，请确认用户名和密码或联系系统管理员，谢谢", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+
+                }
+                else
+                    this.WindowState = FormWindowState.Maximized;
+
                 return false;
 
+
             }
-            else
-                this.WindowState = FormWindowState.Maximized;
+            catch (Exception ex)
+            {
+                ProcessLogger.Fatal("0793212:System Login Start " + DateTime.Now.ToString());
+                MessageBox.Show("登录失败，验证用户信息异常！" + ex, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false; ;
 
-            return false;
-
-
+                throw;
+            }
 
         }
 
@@ -303,7 +316,7 @@ namespace FA_datawork_HRB
                 frmHelp = null;
             }
 
-            
+
         }
 
         private void 查询信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -325,7 +338,7 @@ namespace FA_datawork_HRB
 
         private void 一键配置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
         }
         private void NewMethod1()
         {
@@ -533,7 +546,7 @@ namespace FA_datawork_HRB
 
         private void 打开本地ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void 追踪分析ToolStripMenuItem_Click(object sender, EventArgs e)
